@@ -6,5 +6,8 @@ import java.io.*;
 
 public class NamedClient
 {
+    public static void main (String[] args)
+    {
 
-}
+    } //end main
+} //end class
