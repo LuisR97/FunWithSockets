@@ -10,8 +10,8 @@ public class CollectingServer
     public static void main (String[] args)
     {
         // default port
-        int serverPort = 7;
         if (args.length == 1)
+        int serverPort = 7;
             serverPort = Integer.parseInt(args[0]);
         try
         {
@@ -33,6 +33,7 @@ public class CollectingServer
                 String name = request.getMessage();
                 nameList.add(name);
 
+                for
 
 
                 mySocket.sendMessage(request.getAddress(),request.getPort(), name);

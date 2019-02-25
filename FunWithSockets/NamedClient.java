@@ -10,6 +10,7 @@ public class NamedClient
     {
         InputStreamReader is = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(is);
+        OutputStream nameSend = new OutputStream();
         try
         {
             System.out.println("Welcome to the Echo client.\n" +
@@ -22,6 +23,11 @@ public class NamedClient
             if (portNum.length() == 0)
                 portNum = "7";          // default port number
 
+            System.out.println("Whats the name you want to send? ");
+            String name = br.readLine();
+            System.out.println(name);
+
+            /**
             EchoClientHelper1 helper = new EchoClientHelper1(hostName, portNum);
             boolean done = false;
             String message, echo;
@@ -39,7 +45,7 @@ public class NamedClient
                 { echo = helper.getEcho( message);
                     System.out.println(echo);
                 }
-            } // end while
+            } // end while */
         } // end try
         catch (Exception ex)
         {
