@@ -3,6 +3,7 @@
  */
 
 import java.io.*;
+import java.util.*;
 
 public class CollectingServer
 {
@@ -19,11 +20,23 @@ public class CollectingServer
             MyServerDatagramSocket mySocket = new MyServerDatagramSocket(serverPort);
             System.out.println("Collecting Server is ready.");
 
-            //infinite loop
-           // while (true)
-            //{
+            Vector<String> nameList = new Vector<String>();
 
-            //}
+            //infinite loop
+
+
+            while (true)
+            {
+                DatagramMessage request = mySocket.receiveMessageAndSender();
+                System.out.println("Name received.");
+
+                String name = request.getMessage();
+                nameList.add(name);
+
+
+
+                mySocket.sendMessage(request.getAddress(),request.getPort(), name);
+            } //end while
         } //end try
         catch (Exception ex)
         {
