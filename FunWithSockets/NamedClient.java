@@ -6,11 +6,11 @@ import java.io.*;
 
 public class NamedClient
 {
+    static final String endMessage = ".";
     public static void main (String[] args)
     {
         InputStreamReader is = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(is);
-        OutputStream nameSend = new OutputStream();
         try
         {
             System.out.println("Welcome to the Echo client.\n" +
@@ -23,18 +23,14 @@ public class NamedClient
             if (portNum.length() == 0)
                 portNum = "7";          // default port number
 
-            System.out.println("Whats the name you want to send? ");
-            String name = br.readLine();
-            System.out.println(name);
-
-            /**
             EchoClientHelper1 helper = new EchoClientHelper1(hostName, portNum);
             boolean done = false;
             String message, echo;
             while (!done)
             {
-                System.out.println("Enter a line to receive an echo back from the server, "
+                System.out.println("Enter a name to receive send to and receive back from the server, "
                         + "or a single peroid to quit.");
+                System.out.println("Names so far: " + "\n");
                 message = br.readLine( );
                 if ((message.trim()).equals (endMessage))
                 {

@@ -7,11 +7,12 @@ import java.util.*;
 
 public class CollectingServer
 {
+    static String name = "";
     public static void main (String[] args)
     {
         // default port
-        if (args.length == 1)
         int serverPort = 7;
+        if (args.length == 1)
             serverPort = Integer.parseInt(args[0]);
         try
         {
@@ -20,21 +21,25 @@ public class CollectingServer
             MyServerDatagramSocket mySocket = new MyServerDatagramSocket(serverPort);
             System.out.println("Collecting Server is ready.");
 
-            Vector<String> nameList = new Vector<String>();
+            // Tried using a dynamic array to store names
+            //Vector<String> nameList = new Vector<String>();
 
             //infinite loop
-
-
             while (true)
             {
                 DatagramMessage request = mySocket.receiveMessageAndSender();
                 System.out.println("Name received.");
+                name += "\n" + request.getMessage().trim();
+                System.out.println("Names so far; " + name);
 
-                String name = request.getMessage();
-                nameList.add(name);
 
-                for
-
+                // Tried using a dynamic array to store names
+                //String name = request.getMessage();
+                //nameList.add(name);
+                //for (int i = 0; i < nameList.size(); i++)
+                //{
+                //    System.out.println(nameList.get(i));
+                //}
 
                 mySocket.sendMessage(request.getAddress(),request.getPort(), name);
             } //end while
